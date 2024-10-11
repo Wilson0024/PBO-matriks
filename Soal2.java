@@ -110,7 +110,7 @@ class Matriks{
     }
 }
 
-public class Soal1 {
+public class Soal2 {
     static Scanner sc = new Scanner(System.in);
 
     static void menu(Matriks m1, Matriks m2){
