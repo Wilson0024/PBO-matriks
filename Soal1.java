@@ -82,7 +82,7 @@ class Logika {
 
     public void jumlahMatriks(Logika m1, Logika m2){
         if(m1.ukuran != m2.ukuran){
-            System.out.println("Ukuran Larik 1 dan larik 2 tidak sama. Oleh karena itu, Penjumlahan tidak dapat dilakukan.dilakukan");
+            System.out.println("Ukuran Larik 1 dan larik 2 tidak sama. Oleh karena itu, Penjumlahan tidak dapat dilakukan.");
             return;
         }
 

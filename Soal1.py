@@ -51,9 +51,8 @@ class Logika:
         return lowest
     
     def jumlahMatriks(self, m1, m2):
-        self.setUkuran(m1.__ukuran)
         if(m1.__ukuran != m2.__ukuran):
-            print("Ukuran Larik 1 dan larik 2 tidak sama. Oleh karena itu, Penjumlahan tidak dapat dilakukan")
+            print("Ukuran Larik 1 dan larik 2 tidak sama. Oleh karena itu, Penjumlahan tidak dapat dilakukan.")
             return
         
         for a in range(m1.__ukuran):
@@ -63,47 +62,47 @@ class Logika:
         for a in self.__arr:
             print(a, " ", end="")
             
-def menu(data):
+def menu():
     pilihan = 1
+    data = Logika()
     data2 = Logika()
+    data3 = Logika()
     
     while(pilihan != 0):
         print("\n\tMENU")
         print("====================")
-        print("1. Mencari Rata Rata")
-        print("2. Mencari Nilai Maks")
-        print("3. Mencari Nilai Min")
-        print("4. Mencari jumlah matriks")
+        print("1. Input Matriks Sebagai Data pilihan 2, 3, dan 4")
+        print("2. Mencari Rata Rata")
+        print("3. Mencari Nilai Maks")
+        print("4. Mencari Nilai Min")
+        print("5. Mencari jlh matriks")
         print("0. Exit")
         pilihan = int(input("> "))
         
         if(pilihan == 1):
-            print("Nilai rata-rata = ", data.cariRata2())
-        elif(pilihan == 2):
-            print("Nilai Maks = ", data.nilaiMax())
-        elif(pilihan == 3):
-            print("Nilai Min = ", data.nilaiMin())
-        elif(pilihan == 4):
             data.inputUkuran()
-            print("Matriks 1 : ")
             data.isiArr()
-            
-            print("\nMatriks 2 : ")
-            data2.setUkuran(data.getUkuran())
+        elif(pilihan == 2):
+            print("Nilai rata-rata = ", data.cariRata2())
+        elif(pilihan == 3):
+            print("Nilai Maks = ", data.nilaiMax())
+        elif(pilihan == 4):
+            print("Nilai Min = ", data.nilaiMin())
+        elif(pilihan == 5):
+            data2.inputUkuran()
+            print("Matriks 1 : ")
             data2.isiArr()
             
+            print("\nMatriks 2 : ")
+            data3.setUkuran(data2.getUkuran())
+            data3.isiArr()
+            
             print("\nHasil Jumlah Matriks : ")
-            m3 = Logika()
-            m3.jumlahMatriks(data, data2)
-            m3.output()
+            data3.jumlahMatriks(data2, data3)
+            data3.output()
         elif(pilihan == 0):
             print("Program selesai!!")
         else:
             print("Pilihan tidak ada di Menu!!")
             
-data = Logika()
-
-data.inputUkuran()
-data.isiArr()
-
-menu(data)
+menu()
