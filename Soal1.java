@@ -81,7 +81,6 @@ class Logika {
     }
 
     public void jumlahMatriks(Logika m1, Logika m2){
-        setUkuran(m1.ukuran);
         if(m1.ukuran != m2.ukuran){
             System.out.println("Ukuran Larik 1 dan larik 2 tidak sama. Oleh karena itu, Penjumlahan tidak dapat dilakukan.dilakukan");
             return;
@@ -103,45 +102,52 @@ class Logika {
 public class Soal1{
     static Scanner sc = new Scanner(System.in);
     
-    static void menu(Logika data){
+    static void menu(){
         int pilihan = 1;
+        Logika data = new Logika();
         Logika data2 = new Logika();
+        Logika data3 = new Logika();
+
 
         while(pilihan != 0){
             System.out.println("\n\n\tMENU");
             System.out.println("====================");
-            System.out.println("1. Mencari Rata Rata");
-            System.out.println("2. Mencari Nilai Maks");
-            System.out.println("3. Mencari Nilai Min");
-            System.out.println("4. Mencari jlh matriks");
+            System.out.println("1. Input Matriks Sebagai Data pilihan 2, 3, dan 4");
+            System.out.println("2. Mencari Rata Rata");
+            System.out.println("3. Mencari Nilai Maks");
+            System.out.println("4. Mencari Nilai Min");
+            System.out.println("5. Mencari jlh matriks");
             System.out.println("0. Exit");
             System.out.print("> ");
 
             pilihan = sc.nextInt();
 
             switch(pilihan){
-                case 1:
-                    System.out.println("Nilai rata-rata = " + data.cariRata2());
+                case 1 :
+                    data.inputUkuran();
+                    data.isiArr();
                     break;
                 case 2:
-                    System.out.println("Nilai Maks = " + data.nilaiMax());
+                    System.out.println("Nilai rata-rata = " + data.cariRata2());
                     break;
                 case 3:
+                    System.out.println("Nilai Maks = " + data.nilaiMax());
+                    break;
+                case 4:
                     System.out.println("Nilai Min = " + data.nilaiMin());
                     break;
-                case 4:          
-                    data.inputUkuran();
+                case 5:          
+                    data2.inputUkuran();
                     System.out.println("Matriks 1 : ");
-                    data.isiArr();
-
-                    System.out.println("\nMatriks 2 : ");
-                    data2.setUkuran(data.getUkuran());
                     data2.isiArr();
 
+                    System.out.println("\nMatriks 2 : ");
+                    data3.setUkuran(data2.getUkuran());
+                    data3.isiArr();
+
                     System.out.println("\nHasil Jumlah Matriks : ");
-                    Logika m3 = new Logika();
-                    m3.jumlahMatriks(data, data2);
-                    m3.output();
+                    data3.jumlahMatriks(data2, data3);
+                    data3.output();
                     break;
                 case 0:
                     System.out.println("Program selesai!!");                    
@@ -153,11 +159,6 @@ public class Soal1{
         }
     }
     public static void main(String[] args) {
-        Logika data = new Logika();
-
-        data.inputUkuran();
-        data.isiArr();
-        
-        menu(data);
+        menu();
     }
 }
