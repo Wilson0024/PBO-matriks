@@ -5,115 +5,71 @@ class Matriks {
 private:
     int baris;
     int kolom;
-    int** nilai;
+    int nilai[100][100];
 
 public:
-    Matriks() {
-        baris = 0;
-        kolom = 0;
-        nilai = nullptr;
+    Matriks() : baris(0), kolom(0) {}
+
+    void setBaris(int baris) {
+        this->baris = baris;
     }
 
-    ~Matriks() {
-        if (nilai != nullptr) {
-            for (int i = 0; i < baris; i++) {
-                delete[] nilai[i];
-            }
-            delete[] nilai;
-        }
-    }
-
-    void setBaris(int b) {
-        baris = b;
-        nilai = new int*[baris];
-        for (int i = 0; i < baris; i++) {
-            nilai[i] = new int[kolom];
-        }
-    }
-
-    void setKolom(int k) {
-        kolom = k;
-        for (int i = 0; i < baris; i++) {
-            delete[] nilai[i];
-            nilai[i] = new int[kolom];
-        }
-    }
-
-    void inputBaris() {
-        cout << "Masukkan Besar baris matriks: ";
-        cin >> baris;
-        nilai = new int*[baris];
-        for (int i = 0; i < baris; i++) {
-            nilai[i] = new int[kolom];
-        }
-    }
-
-    void inputKolom() {
-        cout << "Masukkan Besar kolom matriks: ";
-        cin >> kolom;
-        for (int i = 0; i < baris; i++) {
-            delete[] nilai[i];
-            nilai[i] = new int[kolom];
-        }
-    }
-
-    void inputBK() {
-        inputBaris();
-        inputKolom();
+    void setKolom(int kolom) {
+        this->kolom = kolom;
     }
 
     void inputMatriks() {
-        inputBK();
-        for (int a = 0; a < baris; a++) {
-            for (int b = 0; b < kolom; b++) {
-                cout << "Masukkan Matriks baris ke-" << (a + 1) << " kolom ke-" << (b + 1) << ": ";
-                cin >> nilai[a][b];
+        cout << "Masukkan Besar baris matriks: ";
+        cin >> this->baris;
+        cout << "Masukkan Besar kolom matriks: ";
+        cin >> this->kolom;
+
+        for (int i = 0; i < this->baris; i++) {
+            for (int j = 0; j < this->kolom; j++) {
+                cout << "Masukkan Matriks baris ke-" << (i + 1) << " kolom ke-" << (j + 1) << ": ";
+                cin >> this->nilai[i][j];
             }
         }
     }
 
     void outputMatriks() {
-        if (baris == 0 || kolom == 0) {
+        if (this->baris == 0 || this->kolom == 0) {
             cout << "Matriks belum diinput!!" << endl;
             return;
         }
-        for (int a = 0; a < baris; a++) {
-            for (int b = 0; b < kolom; b++) {
-                cout << nilai[a][b] << " ";
+        for (int i = 0; i < this->baris; i++) {
+            for (int j = 0; j < this->kolom; j++) {
+                cout << this->nilai[i][j] << " ";
             }
             cout << endl;
         }
     }
 
     void penjumlahanVoid(const Matriks& m1, const Matriks& m2) {
-        setBaris(m1.baris);
-        setKolom(m1.kolom);
-
+        this->setBaris(m1.baris);
+        this->setKolom(m1.kolom);
         if (m1.baris != m2.baris || m1.kolom != m2.kolom) {
             cout << "Ukuran Ordo Matriks 1 dan 2 tidak sama, Oleh karena itu Penjumlahan tidak dapat dilakukan!" << endl;
             return;
         }
-
-        for (int a = 0; a < baris; a++) {
-            for (int b = 0; b < kolom; b++) {
-                nilai[a][b] = m1.nilai[a][b] + m2.nilai[a][b];
+        for (int i = 0; i < this->baris; i++) {
+            for (int j = 0; j < this->kolom; j++) {
+                this->nilai[i][j] = m1.nilai[i][j] + m2.nilai[i][j];
             }
         }
     }
 
     Matriks penjumlahanFungsi(const Matriks& m2) {
         Matriks m3;
-        m3.setBaris(baris);
-        m3.setKolom(kolom);
-
-        if (baris != m2.baris || kolom != m2.kolom) {
+        m3.setBaris(this->baris);
+        m3.setKolom(this->kolom);
+        if (this->baris != m2.baris || this->kolom != m2.kolom) {
             cout << "Ukuran Ordo Matriks 1 dan 2 tidak sama, Oleh karena itu Penjumlahan tidak dapat dilakukan!" << endl;
             return m3;
         }
-
-        for (int a = 0; a < baris; a++) {
-            for (int b = 0; b < kolom; b++) {
-                m3.nilai[a][b] = nilai[a][b] + m2.nilai[a][b];
+        for (int i = 0; i < this->baris; i++) {
+            for (int j = 0; j < this->kolom; j++) {
+                m3.nilai[i][j] = this->nilai[i][j] + m2.nilai[i][j];
             }
         }
         return m3;
@@ -122,7 +78,6 @@ public:
 
 void menu(Matriks& m1, Matriks& m2) {
     int pilihan = 1;
-
     while (pilihan != 0) {
         cout << "\n\tMenu" << endl;
         cout << "===============" << endl;
