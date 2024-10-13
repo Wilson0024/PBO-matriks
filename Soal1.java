@@ -1,8 +1,10 @@
 /*
-Nama    : Wilson Angelie Tan
-NPM     : 140810230024
-Kelas   : B
-Tanggal : 07/10/2024
+ Nama : Wilson Angelie Tan, Stan F., Theophilus Samuel G.
+ NPM :140810230024, 140810230046, 140810230054
+ Tanggal Buat :13/10/2024
+ Deskripsi :Cari nilai rata-rata nilai, nilai
+           terbesar dan terkecilmenggunakan array satu dimensi dalam
+           bentuk OOP 2 class bahasapython
 */
 
 import java.util.Scanner;

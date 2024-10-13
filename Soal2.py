@@ -1,3 +1,8 @@
+
+#  Nama : Wilson Angelie Tan, Stan F., Theophilus Samuel G.
+#  NPM :140810230024, 140810230046, 140810230054
+#  Tanggal Buat :13/10/2024
+#  Deskripsi :penjumlahan matriks menggunakan array dua dimensi dalam bentuk OOP2 class bahasa Python
 class Matriks:
     def __init__(self, baris=0, kolom=0, nilai=None):
         self.__baris = baris
